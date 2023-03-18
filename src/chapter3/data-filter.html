@@ -40,8 +40,10 @@
                     return d.category;
                 });
 
-        // Update。默认的情况下selection.data(data)方法得到的就是Update状态（更新状态）
+        // Update。
         d3.selectAll("div.h-bar").attr("class", "h-bar");
+        // 使用下面这种方式也是可以的。因为默认的情况下selection.data(data)方法得到的就是Update状态（更新状态）
+        // bars.attr("class", "h-bar");
 
         // Filter
         bars.filter(function (d, i) { // <-E
