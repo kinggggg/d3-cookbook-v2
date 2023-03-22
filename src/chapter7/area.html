@@ -52,7 +52,10 @@
             .attr("d", function(d){return line(d);});        
             
         var area = d3.area() // <-C
-            .x(function(d) { return x(d.x); }) // <-D
+            .x(function(d) { 
+                console.info('>>>>>', x(d.x)) 
+                return x(d.x); 
+            }) // <-D
             .y0(y(0)) // <-E
             .y1(function(d) { return y(d.y); }); // <-F
             
@@ -75,6 +78,8 @@
     }
     
     function renderAxes(svg){
+        // 省略定义域domain时，定义域domain默认的范围为[0, 1]
+        // 并且，在坐标轴上显示的范围是domain的范围！在这之前自己的理解一直是坐标轴上的范围是range的范围，理解是错误的
         var xAxis = d3.axisBottom()
                 .scale(d3.scaleLinear().range([0, quadrantWidth()]));
 
